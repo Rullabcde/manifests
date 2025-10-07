@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+
+metadata:
+  name: migrator
+  namespace: dev
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/sync-wave: "0"
+
+spec:
+  backoffLimit: 3
+
+  template:
+    metadata:
+      labels:
+        app: migrator
+    spec:
+      restartPolicy: Never
+      imagePullSecrets:
+      - name: harbor-secret
+      containers:
+      - name: migrator
+        image: reg.rullabcd.my.id/library/app-migrator:latest
+        command: [ "sh", "-c" ]
+        args: [ "npx prisma migrate deploy" ]
+        envFrom:
+        - secretRef:
+            name: next-secrets
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"
