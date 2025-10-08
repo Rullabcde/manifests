@@ -4,6 +4,7 @@ kind: ConfigMap
 metadata:
   name: next-config
   namespace: dev
+    argocd.argoproj.io/sync-wave: "0"
 
 data:
   NEXTAUTH_URL: "next.rullabcd.my.id"
