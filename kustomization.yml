@@ -10,6 +10,6 @@ resources:
 
 images:
 - name: reg.rullabcd.my.id/library/app
-  newTag: "1"
+  newTag: "2"
 - name: reg.rullabcd.my.id/library/app-migrator
-  newTag: "1"
+  newTag: "2"
