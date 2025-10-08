@@ -25,9 +25,12 @@ spec:
         image: reg.rullabcd.my.id/library/app-migrator:latest
         command: [ "sh", "-c" ]
         args: [ "npx prisma migrate deploy" ]
-        envFrom:
-        - secretRef:
-            name: next-secrets
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: next-secrets
+              key: DATABASE_URL
         resources:
           requests:
             cpu: "500m"

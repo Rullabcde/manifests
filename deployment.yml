@@ -26,11 +26,22 @@ spec:
       - name: next-app
         image: reg.rullabcd.my.id/library/app:latest
         imagePullPolicy: IfNotPresent
-        envFrom:
-        - configMapRef:
-            name: next-config
-        - secretRef:
-            name: next-secrets
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: next-secrets
+              key: DATABASE_URL
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: next-config
+              key: NODE_ENV
+        - name: NEXTAUTH_URL
+          valueFrom:
+            configMapKeyRef:
+              name: next-config
+              key: NEXTAUTH_URL
         ports:
         - containerPort: 3000
         resources:
