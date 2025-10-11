@@ -4,6 +4,8 @@ kind: Service
 metadata:
   name: next-app-service
   namespace: dev
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 
 spec:
   selector:
