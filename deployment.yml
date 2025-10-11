@@ -18,8 +18,6 @@ spec:
       labels:
         app: next-app
     spec:
-      nodeSelector:
-        node-role: app
       imagePullSecrets:
       - name: harbor-secret
       containers:
