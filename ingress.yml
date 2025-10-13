@@ -6,7 +6,7 @@ metadata:
   namespace: dev
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "3"
 
 spec:
   rules:

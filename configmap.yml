@@ -5,7 +5,7 @@ metadata:
   name: next-config
   namespace: dev
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "-2"
 
 data:
   NEXTAUTH_URL: "next.rullabcd.my.id"
